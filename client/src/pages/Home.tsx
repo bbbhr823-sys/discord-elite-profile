@@ -87,7 +87,7 @@ export default function Home() {
       name: "Ramo",
       role: "Community Owner",
       message: "Phantom has been a mod in my discord community for a while. He's friendly and responsive and gets any requests I need done very quickly. He's also always giving suggestions on how to make the server better.",
-      image: "/assets/ramo-server-owner-recomending-me-apprecatiing me .png",
+      image: "/assets/ramo-testimonial.png",
       timestamp: "Yesterday at 22:52",
       isMessage: true,
     },
