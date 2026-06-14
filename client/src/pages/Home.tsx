@@ -52,34 +52,34 @@ export default function Home() {
     {
       title: "Server Administration Evidence (Ramo)",
       description: "The image below shows me in my role in server administration for the Ramo Akh official discord server",
-      image: "/manus-storage/server-adminstration-proof-ramo_5d288716.png",
+      image: "/assets/server-adminstration-proof-ramo.png",
       label: "Server Administration Experience",
     },
     {
       title: "Moderation Statistics (Hxsain)",
       description: "The following images shows 20 cases I had throughout my time at hxsains discord server, these are just a few cases of many.",
-      image: "/manus-storage/mod-statisctics-hxsain_f36e12fb.png",
+      image: "/assets/mod-statisctics-hxsain.png",
       label: "Moderation Statistics",
     },
     {
       title: "Great Ticket Handling Evidence",
       description: "The following image is going to show a person giving a ticket rating for how I handled his ticket and if I supported him properly",
-      image: "/manus-storage/great-ticket-handling-proof_df3f33c1.png",
+      image: "/assets/great-ticket-handling-proof.png",
       label: "Evidence Of Member Satisfaction",
     },
     {
       title: "All-Time Cases (Ramo)",
       description: "In the image here you can see the exact amount of moderation cases done in Ramos server which is 112",
-      image: "/manus-storage/all-time-cases-ramo(112)_3f725da2.png",
+      image: "/assets/all-time-cases-ramo(112).png",
       label: "Evidence of High Volume of Cases",
     },
   ];
 
   const evidenceGallery = [
-    { title: "Shane Fan Statistics", image: "/manus-storage/Moderation-statistics-shanefanxserver_9a59616c.png", label: "MOD WEEKLY/MOD MONTHLY CASES" },
-    { title: "Hxsain Mod Role", image: "/manus-storage/mod-role-proof-hxsain_e7984291.png", label: "VERIFIED MOD STATUS IN HXSAIN SERVER" },
-    { title: "Shane Fan Mod Role", image: "/manus-storage/proof-of-mod-role-in-shane-fanx_ecbbb0a1.png", label: "VERIFIED MOD STATUS IN SHANE FAN" },
-    { title: "Ticket Support Evidence", image: "/manus-storage/satisfied-user-and-fast-ticket-support_73811350.png", label: "TICKET RESPONSE RATING" },
+    { title: "Shane Fan Statistics", image: "/assets/Moderation-statistics-shanefanxserver.png", label: "MOD WEEKLY/MOD MONTHLY CASES" },
+    { title: "Hxsain Mod Role", image: "/assets/mod-role-proof-hxsain.png", label: "VERIFIED MOD STATUS IN HXSAIN SERVER" },
+    { title: "Shane Fan Mod Role", image: "/assets/proof-of-mod-role-in-shane-fanx.png", label: "VERIFIED MOD STATUS IN SHANE FAN" },
+    { title: "Ticket Support Evidence", image: "/assets/satisfied-user-and-fast-ticket-support.png", label: "TICKET RESPONSE RATING" },
   ];
 
   const testimonials = [
@@ -87,14 +87,14 @@ export default function Home() {
       name: "Ramo",
       role: "Community Owner",
       message: "Phantom has been a mod in my discord community for a while. He's friendly and responsive and gets any requests I need done very quickly. He's also always giving suggestions on how to make the server better.",
-      image: "/assets/ramo-testimonial.png",
+      image: "/assets/ramo-server-owner-recomending-me-apprecatiing me .png",
       timestamp: "Yesterday at 22:52",
       isMessage: true,
     },
     {
       name: "Issa",
       role: "Staff of the Week - Shane Fan Official",
-      image: "/manus-storage/shane-staff-of-the-week_d0ebded2.png",
+      image: "/assets/shane-staff-of-the-week.png",
       label: "Click to view full screenshot",
       isMessage: false,
     },
@@ -329,21 +329,27 @@ export default function Home() {
             {caseStudies.map((study, idx) => (
               <motion.div key={idx} variants={itemVariants} className="glass-card overflow-hidden">
                 <div className="h-64 overflow-hidden bg-gradient-to-br from-accent/20 to-accent/5">
-                  <img src={study.image} alt={study.title} className="w-full h-full object-cover" />
+                  <img
+                    src={study.image}
+                    alt={study.title}
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  />
                 </div>
                 <div className="p-8">
-                  <span className="inline-block px-3 py-1 rounded-full bg-accent/20 text-accent text-xs font-medium mb-3">
+                  <span className="text-xs font-bold text-accent tracking-widest uppercase mb-3 block">
                     {study.label}
                   </span>
-                  <h3 className="text-xl font-playfair font-bold text-foreground mb-2">{study.title}</h3>
-                  <p className="text-foreground/70 mb-6">{study.description}</p>
+                  <h3 className="text-2xl font-playfair font-bold text-foreground mb-4">{study.title}</h3>
+                  <p className="text-foreground/70 mb-6 leading-relaxed">
+                    {study.description}
+                  </p>
                   <Button
-                    variant="outline"
-                    size="sm"
-                    className="border-accent/30 hover:bg-accent/10 rounded-full"
+                    variant="link"
+                    className="p-0 h-auto text-accent font-bold hover:text-accent/80 transition-colors group"
                     onClick={() => window.open(study.image)}
                   >
-                    View Full Evidence <ExternalLink className="w-4 h-4 ml-2" />
+                    VIEW FULL EVIDENCE
+                    <ExternalLink className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </div>
               </motion.div>
@@ -364,30 +370,29 @@ export default function Home() {
           >
             Moderation Evidence
           </motion.h2>
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6"
-          >
-            {evidenceGallery.map((evidence, idx) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {evidenceGallery.map((item, idx) => (
               <motion.div
                 key={idx}
-                variants={itemVariants}
-                className="glass-card overflow-hidden cursor-pointer hover:shadow-2xl transition-all"
-                onClick={() => window.open(evidence.image)}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                viewport={{ once: true }}
+                className="group relative glass-card overflow-hidden aspect-square cursor-pointer"
+                onClick={() => window.open(item.image)}
               >
-                <div className="h-80 overflow-hidden bg-gradient-to-br from-accent/20 to-accent/5">
-                  <img src={evidence.image} alt={evidence.title} className="w-full h-full object-cover" />
-                </div>
-                <div className="p-6">
-                  <h4 className="font-playfair font-bold text-foreground mb-1">{evidence.title}</h4>
-                  <p className="text-sm text-foreground/60">{evidence.label}</p>
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-accent/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center">
+                  <h4 className="text-white font-bold mb-2">{item.title}</h4>
+                  <p className="text-white/80 text-xs uppercase tracking-widest">{item.label}</p>
                 </div>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -399,125 +404,128 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="text-4xl font-playfair font-bold text-foreground mb-12"
+            className="text-4xl font-playfair font-bold text-foreground mb-12 text-center"
           >
             Endorsed by Community Leaders
           </motion.h2>
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8"
-          >
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {testimonials.map((testimonial, idx) => (
               <motion.div
                 key={idx}
-                variants={itemVariants}
-                className="glass-card overflow-hidden"
+                initial={{ opacity: 0, x: idx === 0 ? -20 : 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="glass-card p-8 flex flex-col"
               >
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-16 h-16 rounded-full overflow-hidden bg-accent/10 border-2 border-accent/20">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-playfair font-bold text-foreground">{testimonial.name}</h3>
+                    <p className="text-accent text-sm font-medium">{testimonial.role}</p>
+                  </div>
+                </div>
                 {testimonial.isMessage ? (
-                  <div className="p-8">
-                    <div className="flex items-start gap-4 mb-6">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-accent/60 flex-shrink-0"></div>
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-1">
-                          <h4 className="font-playfair font-bold text-foreground">{testimonial.name}</h4>
-                          <span className="text-xs text-foreground/50">{testimonial.timestamp}</span>
-                        </div>
-                        <p className="text-accent text-sm font-medium">{testimonial.role}</p>
-                      </div>
+                  <div className="flex-1 bg-white/40 rounded-2xl p-6 border border-white/50 shadow-inner">
+                    <div className="flex items-center gap-2 mb-3 text-xs text-foreground/40 font-medium">
+                      <span className="text-foreground/80 font-bold">{testimonial.name}</span>
+                      <span>{testimonial.timestamp}</span>
                     </div>
-                    <p className="text-foreground/80 leading-relaxed mb-6">{testimonial.message}</p>
-                    <button
-                      onClick={() => window.open(testimonial.image)}
-                      className="text-accent text-sm font-medium hover:underline"
-                    >
-                      View original message →
-                    </button>
+                    <p className="text-foreground/80 leading-relaxed italic">
+                      "{testimonial.message}"
+                    </p>
+                    <div className="mt-6 flex justify-end">
+                      <Button
+                        variant="link"
+                        className="p-0 h-auto text-accent text-xs font-bold uppercase tracking-widest group"
+                        onClick={() => window.open(testimonial.image)}
+                      >
+                        View original message
+                        <ExternalLink className="w-3 h-3 ml-2 transition-transform group-hover:translate-x-1" />
+                      </Button>
+                    </div>
                   </div>
                 ) : (
-                  <>
-                    <div className="h-96 overflow-hidden bg-gradient-to-br from-accent/20 to-accent/5 cursor-pointer"
-                      onClick={() => window.open(testimonial.image)}
-                    >
-                      <img src={testimonial.image} alt={testimonial.name} className="w-full h-full object-cover" />
+                  <div className="flex-1 flex flex-col">
+                    <div className="relative aspect-video rounded-xl overflow-hidden mb-4 group cursor-pointer" onClick={() => window.open(testimonial.image)}>
+                      <img
+                        src={testimonial.image}
+                        alt={testimonial.label}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors" />
                     </div>
-                    <div className="p-8 text-center">
-                      <h4 className="font-playfair font-bold text-foreground text-lg mb-1">{testimonial.name}</h4>
-                      <p className="text-accent text-sm font-medium mb-4">{testimonial.role}</p>
-                      <p className="text-foreground/60 text-sm">{testimonial.label}</p>
-                    </div>
-                  </>
+                    <p className="text-sm text-foreground/60 text-center font-medium">
+                      {testimonial.label}
+                    </p>
+                  </div>
                 )}
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-accent/20 via-accent/10 to-accent/20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="container max-w-2xl mx-auto text-center"
-        >
-          <h2 className="text-4xl font-playfair font-bold text-foreground mb-6">
-            Ready to Build Your Community?
-          </h2>
-          <p className="text-lg text-foreground/70 mb-8">
-            Let us talk about creating a great community that is passionate and committed. Be it an established community or a newly formed one, the correct approach can change everything.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              className="bg-accent hover:bg-accent/90 text-white rounded-full px-8 btn-smooth"
-              onClick={() => window.location.href = "mailto:bbbhr823@gmail.com"}
+      {/* Contact Section */}
+      <section id="contact" className="py-20 px-4">
+        <div className="container max-w-4xl">
+          <div className="glass-card p-12 text-center bg-accent text-white border-none">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
             >
-              Get in Touch
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="rounded-full px-8 border-accent/30 hover:bg-accent/10 btn-smooth"
-              onClick={() => window.open("https://discord.gg/sgFhvNEXpt")}
-            >
-              Join Community
-            </Button>
+              <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-6">Ready to Build Your Community?</h2>
+              <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
+                Let's talk about creating a great community that is passionate and committed. Be it an established community or a newly formed one, the correct approach can change everything.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <a
+                  href="mailto:bbbhr823@gmail.com"
+                  className="flex items-center gap-3 bg-white text-accent px-8 py-4 rounded-full font-bold text-lg hover:bg-white/90 transition shadow-lg"
+                >
+                  <Mail className="w-6 h-6" />
+                  bbbhr823@gmail.com
+                </a>
+                <div className="flex items-center gap-4">
+                  <a href="https://www.linkedin.com/in/ali-managing/" target="_blank" rel="noopener noreferrer" className="p-4 bg-white/20 hover:bg-white/30 rounded-full transition">
+                    <Linkedin className="w-6 h-6" />
+                  </a>
+                  <a href="https://github.com/bbbhr823-sys" target="_blank" rel="noopener noreferrer" className="p-4 bg-white/20 hover:bg-white/30 rounded-full transition">
+                    <Github className="w-6 h-6" />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* Footer */}
-      <footer id="contact" className="py-12 px-4 bg-white/50 backdrop-blur-md border-t border-white/30">
-        <div className="container">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="flex items-center gap-3">
-              <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310519663425963915/HfUkXuMrcGW2RPLDqpi2zf/brand-logo-i7GbP4fAHKY5ANzU5PAxqu.webp"
-                alt="Ali Abdul Logo"
-                className="w-8 h-8"
-              />
-              <span className="font-playfair font-bold text-foreground">Ali Abdul</span>
-            </div>
-            <div className="flex items-center gap-6">
-              <a href="https://www.linkedin.com/in/ali-managing/" target="_blank" rel="noopener noreferrer" className="text-foreground/60 hover:text-accent transition">
-                LinkedIn
-              </a>
-              <a href="https://github.com/bbbhr823-sys" target="_blank" rel="noopener noreferrer" className="text-foreground/60 hover:text-accent transition">
-                GitHub
-              </a>
-              <a href="mailto:bbbhr823@gmail.com" className="text-foreground/60 hover:text-accent transition">
-                Email
-              </a>
-              <a href="https://discord.gg/sgFhvNEXpt" target="_blank" rel="noopener noreferrer" className="text-foreground/60 hover:text-accent transition">
-                Discord
-              </a>
-            </div>
-            <p className="text-sm text-foreground/60">© 2026 Ali Abdul. All rights reserved.</p>
+      <footer className="py-12 border-t border-white/20">
+        <div className="container flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-3">
+            <img
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663425963915/HfUkXuMrcGW2RPLDqpi2zf/brand-logo-i7GbP4fAHKY5ANzU5PAxqu.webp"
+              alt="Ali Abdul Logo"
+              className="w-8 h-8 opacity-50"
+            />
+            <span className="font-playfair font-bold text-foreground/50">Ali Abdul</span>
+          </div>
+          <p className="text-sm text-foreground/40">
+            © 2026 Ali Abdul. All rights reserved.
+          </p>
+          <div className="flex items-center gap-6">
+            <a href="#experience" className="text-xs text-foreground/40 hover:text-accent transition uppercase tracking-widest font-bold">Experience</a>
+            <a href="#case-studies" className="text-xs text-foreground/40 hover:text-accent transition uppercase tracking-widest font-bold">Case Studies</a>
+            <a href="#contact" className="text-xs text-foreground/40 hover:text-accent transition uppercase tracking-widest font-bold">Contact</a>
           </div>
         </div>
       </footer>
