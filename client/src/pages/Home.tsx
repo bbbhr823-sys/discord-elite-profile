@@ -87,6 +87,7 @@ export default function Home() {
       name: "Ramo",
       role: "Community Owner",
       message: "Phantom has been a mod in my discord community for a while. He's friendly and responsive and gets any requests I need done very quickly. He's also always giving suggestions on how to make the server better.",
+      pfp: "/assets/ramo-pfp.png",
       image: "/assets/ramo-testimonial.png",
       timestamp: "Yesterday at 22:52",
       isMessage: true,
@@ -94,6 +95,7 @@ export default function Home() {
     {
       name: "Issa",
       role: "Staff of the Week - Shane Fan Official",
+      pfp: "/assets/issa-pfp.png",
       image: "/assets/shane-staff-of-the-week.png",
       label: "Click to view full screenshot",
       isMessage: false,
@@ -421,7 +423,7 @@ export default function Home() {
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-16 h-16 rounded-full overflow-hidden bg-accent/10 border-2 border-accent/20">
                     <img
-                      src={testimonial.image}
+                      src={testimonial.pfp}
                       alt={testimonial.name}
                       className="w-full h-full object-cover"
                     />
@@ -437,9 +439,14 @@ export default function Home() {
                       <span className="text-foreground/80 font-bold">{testimonial.name}</span>
                       <span>{testimonial.timestamp}</span>
                     </div>
-                    <p className="text-foreground/80 leading-relaxed italic">
-                      "{testimonial.message}"
-                    </p>
+                    <div className="relative aspect-[1068/258] rounded-xl overflow-hidden mb-4 group cursor-pointer" onClick={() => window.open(testimonial.image)}>
+                      <img
+                        src={testimonial.image}
+                        alt="Testimonial Proof"
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors" />
+                    </div>
                     <div className="mt-6 flex justify-end">
                       <Button
                         variant="link"
